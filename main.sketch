@@ -1,0 +1,22 @@
+void setup() {
+	pinMode(12, OUTPUT);
+	digitalWrite(12, 0);
+	Serial.begin(9600);
+}
+
+void loop() {
+	int bytesAvailable = Serial.available();
+
+	if (bytesAvailable > 0) {
+		digitalWrite(12, 0);
+		delay(100);
+		digitalWrite(12, 1);
+		delay(100);
+
+		while (Serial.available() > 0) {
+			Serial.read();
+		}
+
+		delay(250);
+	}
+}
